@@ -91,8 +91,8 @@
         <option value="">まずコースを選択してください</option>
       </select>
       <div class="hint">
-        表示ルール：芝→ <b>t_距離.jpg</b> ／ ダ→ <b>d_距離.jpg</b><br>
-        例：札幌 芝1000m → img/sapporo/t_1000.jpg
+        表示ルール：芝→ <b>t_距離.png</b> ／ ダ→ <b>d_距離.png</b><br>
+        例：札幌 芝1000m → img/sapporo/t_1000.png
       </div>
     </div>
 
@@ -109,7 +109,7 @@
 
 <script>
 /* ==========
-  条件2リスト（あなたの指定どおり）
+  条件2リスト（指定どおり）
 ========== */
 const distMap = {
   "札幌": ["芝1000m","芝1200m","芝1500m","芝1800m","芝2000m","芝2600m","ダ1000m","ダ1700m","ダ2400m"],
@@ -155,7 +155,9 @@ function buildImagePath(course, distLabel){
   const slug = courseSlug[course];
   const p = parseDistLabel(distLabel);
   if(!slug || !p) return null;
-  return `img/${slug}/${p.surface}_${p.meters}.jpg`;
+
+  // ★png固定（あなたの画像がpngのため）
+  return `img/${slug}/${p.surface}_${p.meters}.png`;
 }
 
 /* ==========
@@ -228,8 +230,8 @@ elDist.addEventListener("change", () => {
       `チェック：\n` +
       `- GitHubに画像をアップ済み？\n` +
       `- フォルダ名（例 sapporo）合ってる？\n` +
-      `- ファイル名（t_1000.jpg / d_1700.jpg）合ってる？\n` +
-      `- 拡張子 .jpg で統一できてる？`;
+      `- ファイル名（t_1000.png / d_1700.png）合ってる？\n` +
+      `- 大文字小文字（PNG/ png）が違わない？`;
   };
 
   // キャッシュ対策（更新しても反映されない時用）
